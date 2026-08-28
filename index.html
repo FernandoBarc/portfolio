@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+  index.html — the homepage.
+
+  The visible content is NOT written here: it is pulled from js/data.js and
+  injected into the elements marked with an id (hero-name, experience-list,
+  timeline, ...). Edit js/data.js to change the words; edit this file only if
+  you want to add or remove whole sections.
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fernando Barcelata — Geoinformatics Engineer</title>
+  <meta name="description" content="Portfolio of Fernando Barcelata, geoinformatics engineer and geospatial data analyst based in Milan: Earth observation, remote sensing and spatial data analysis.">
+
+  <!-- Fonts. Remove these two lines if you prefer to work fully offline;
+       the CSS falls back to system fonts. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Fernando Barcelata<span>.</span></a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+
+      <nav class="nav" id="nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#academic">Academic</a>
+        <a href="projects.html">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================= INTRO ============================
+         Text comes from PROFILE.intro / PROFILE.meta in js/data.js. -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Portfolio</p>
+        <h1 id="hero-name">Fernando Barcelata</h1>
+        <p class="role" id="hero-role"></p>
+
+        <div class="intro" id="hero-intro"></div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="projects.html">See the projects</a>
+          <a class="btn btn-ghost" data-profile="cv" href="#">Download CV</a>
+          <a class="btn btn-ghost" data-profile="email" href="#">Email me</a>
+        </div>
+
+        <dl class="meta-strip" id="hero-meta"></dl>
+      </div>
+    </section>
+
+    <!-- ========================== WHAT I DO ==========================
+         Three short cards. Delete this whole <section> to remove it. -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Focus</p>
+          <h2>What I work on</h2>
+        </div>
+        <div class="focus-grid" id="focus-grid"></div>
+      </div>
+    </section>
+
+    <!-- ========================== EXPERIENCE ========================= -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Experience</p>
+          <h2>Where I have worked</h2>
+          <p>Six years across semiconductor validation, automotive electronics and manufacturing, moving steadily from instruments towards data.</p>
+        </div>
+        <div id="experience-list"></div>
+      </div>
+    </section>
+
+    <!-- ===================== ACADEMIC + EXTRACURRICULAR ==============
+         One vertical track. Degrees are prominent; courses, hackathons and
+         summer schools are rendered smaller and muted (kind:
+         "extracurricular" in js/data.js). -->
+    <section class="section" id="academic">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Academic &amp; beyond</p>
+          <h2>Studies, and what I did around them</h2>
+          <p>Degrees are marked with a filled point on the track; summer schools, hackathons and courses sit on the same line as lighter marks.</p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Open to Earth observation and geospatial data roles.</h2>
+      <p>Based in Milan, happy to relocate within Europe.</p>
+
+      <div class="footer-links">
+        <a data-profile="email" data-profile-text="true" href="#">email</a>
+        <a data-profile="linkedin" href="#">LinkedIn</a>
+        <a data-profile="github" href="#">GitHub</a>
+        <a data-profile="cv" href="#">CV (PDF)</a>
+      </div>
+
+      <p class="colophon">© <span id="year"></span> Fernando Barcelata — built with plain HTML, CSS and JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- data.js must load before main.js -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

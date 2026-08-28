@@ -1,0 +1,496 @@
+/* ===========================================================================
+   styles.css
+
+   Layout idea: the page is styled after a satellite image product sheet.
+   Mono type is used for anything that behaves like acquisition metadata
+   (dates, coordinates, tags); the wide display face is used for headings the
+   way labels are set on a map. The one loud colour is a magenta borrowed from
+   false-colour infrared composites, where healthy vegetation renders pink.
+
+   Sections in this file:
+     1. Tokens (colours, type, spacing)   <- change these first
+     2. Base + typography
+     3. Layout helpers
+     4. Header / navigation
+     5. Hero
+     6. Focus cards
+     7. Experience
+     8. Timeline (academic + extracurricular)
+     9. Projects
+    10. Footer
+    11. Motion + responsive
+   =========================================================================== */
+
+
+/* ------------------------------------------------------------------ 1. TOKENS */
+:root {
+  /* Colours */
+  --ink:        #10161a;   /* main text, near black with a blue cast */
+  --ink-soft:   #46545c;   /* secondary text */
+  --ink-faint:  #7d8c93;   /* captions, metadata */
+  --paper:      #f3f5f2;   /* page background */
+  --paper-2:    #e8ebe5;   /* cards, alternating bands */
+  --line:       #d2d8d0;   /* hairlines and borders */
+  --nir:        #d6246e;   /* accent: false-colour infrared magenta */
+  --band:       #1f6b58;   /* secondary accent: vegetation green */
+
+  /* Type */
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Spacing / sizing */
+  --page:     1120px;  /* max content width */
+  --gutter:   clamp(1.25rem, 5vw, 3rem);
+  --section-y: clamp(3.5rem, 8vw, 6.5rem);
+  --radius:   2px;     /* almost square: this is an instrument, not an app */
+}
+
+
+/* -------------------------------------------------------- 2. BASE + TYPOGRAPHY */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-stretch: 118%;        /* Archivo is a variable font: this widens it */
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p { margin: 0 0 1rem; }
+a { color: inherit; }
+
+/* "Eyebrow": the small mono label above every section title. */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 14px; height: 1px;
+  background: var(--nir);
+  vertical-align: middle;
+  margin-right: 0.6em;
+}
+
+/* Small mono chip used for technologies and skills. */
+.tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.2rem 0.5rem;
+  background: transparent;
+  white-space: nowrap;
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+
+
+/* ------------------------------------------------------- 3. LAYOUT HELPERS */
+.wrap {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
+.section-head { margin-bottom: 2.5rem; max-width: 46ch; }
+.section-head h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.section-head p { color: var(--ink-soft); margin-top: 0.75rem; }
+
+/* Skip link for keyboard users. */
+.skip {
+  position: absolute; left: -9999px;
+  background: var(--ink); color: var(--paper);
+  padding: 0.6rem 1rem; z-index: 100;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+:focus-visible { outline: 2px solid var(--nir); outline-offset: 3px; }
+
+
+/* ------------------------------------------------------------- 4. HEADER */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px; gap: 1rem;
+}
+.brand {
+  font-family: var(--display);
+  font-stretch: 118%;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.brand span { color: var(--nir); }
+
+.nav { display: flex; align-items: center; gap: 1.5rem; }
+.nav a {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-block: 0.3rem;
+  border-bottom: 1px solid transparent;
+}
+.nav a:hover { color: var(--ink); border-bottom-color: var(--nir); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Hamburger, only visible on small screens (see section 11). */
+.nav-toggle {
+  display: none;
+  background: none; border: 1px solid var(--line); border-radius: var(--radius);
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  padding: 0.35rem 0.6rem; cursor: pointer; color: var(--ink);
+}
+
+
+/* --------------------------------------------------------------- 5. HERO */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 9vw, 7rem) var(--section-y);
+}
+
+/* Faint graticule, like the grid overlaid on a map sheet. */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(120% 80% at 70% 20%, #000 0%, transparent 70%);
+          mask-image: radial-gradient(120% 80% at 70% 20%, #000 0%, transparent 70%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Signature element: a single sensor sweep across the hero on page load. */
+.hero::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 0; height: 2px;
+  background: linear-gradient(to right, transparent, var(--nir), transparent);
+  opacity: 0;
+  animation: sweep 2.2s ease-out 0.2s 1;
+  pointer-events: none;
+}
+@keyframes sweep {
+  0%   { transform: translateY(0);      opacity: 0; }
+  15%  { opacity: 0.9; }
+  100% { transform: translateY(70vh);   opacity: 0; }
+}
+
+.hero .wrap { position: relative; }
+
+.hero h1 {
+  font-size: clamp(2.8rem, 9vw, 5.6rem);
+  font-stretch: 125%;
+  font-weight: 700;
+  margin: 0.4rem 0 0.6rem;
+}
+.hero .role {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--band);
+  margin-bottom: 2rem;
+}
+.hero .intro { max-width: 60ch; font-size: 1.06rem; color: var(--ink-soft); }
+.hero .intro p:first-child { color: var(--ink); }
+
+/* Metadata strip: mimics the header of an image acquisition record. */
+.meta-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 2.5rem;
+}
+.meta-strip div { background: var(--paper); padding: 0.85rem 1rem; }
+.meta-strip dt {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem;
+}
+.meta-strip dd { margin: 0; font-size: 0.92rem; }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--nir); border-color: var(--nir); }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+
+/* -------------------------------------------------------- 6. FOCUS CARDS */
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.focus-card { border-top: 2px solid var(--ink); padding-top: 1rem; }
+.focus-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.focus-card p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+
+/* --------------------------------------------------------- 7. EXPERIENCE */
+.job {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 2rem;
+  padding-block: 2.25rem;
+  border-top: 1px solid var(--line);
+}
+.job:first-of-type { border-top: none; padding-top: 0; }
+
+/* Logo well. Images are constrained; the text fallback fills the same box. */
+.logo {
+  width: 92px; height: 92px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+  padding: 0.6rem;
+}
+.logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.logo .initials {
+  font-family: var(--display); font-stretch: 118%; font-weight: 700;
+  font-size: 1.4rem; color: var(--ink-faint);
+}
+
+.job-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1rem; }
+.job h3 { font-size: 1.35rem; }
+.job .company { font-family: var(--mono); font-size: 0.85rem; color: var(--band); }
+.job .period {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint);
+  margin-left: auto; white-space: nowrap;
+}
+.job ul { margin: 1rem 0 0; padding-left: 1.1rem; }
+.job li { margin-bottom: 0.55rem; color: var(--ink-soft); font-size: 0.97rem; }
+.job li::marker { color: var(--nir); }
+
+
+/* ----------------------------------------------------------- 8. TIMELINE
+   One vertical track. Degrees get a filled tick, a logo and full-size type;
+   extracurriculars get a hollow tick and smaller, muted type so they read as
+   secondary without being hidden.
+   ------------------------------------------------------------------------ */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: "";
+  position: absolute; left: 5px; top: 6px; bottom: 6px;
+  width: 1px; background: var(--line);
+}
+
+.tl-item { position: relative; padding-bottom: 2.75rem; }
+.tl-item::before {                 /* the tick on the track */
+  content: "";
+  position: absolute; left: -2rem; top: 8px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 4px var(--paper);
+}
+.tl-item .tl-period {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  color: var(--ink-faint); text-transform: uppercase;
+}
+.tl-head { display: flex; gap: 1.25rem; align-items: flex-start; margin-top: 0.4rem; }
+.tl-item h3 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+.tl-item .tl-institution { font-family: var(--mono); font-size: 0.85rem; color: var(--band); }
+.tl-item p { color: var(--ink-soft); margin: 0.6rem 0 0; }
+.tl-item ul { margin: 0.6rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.93rem; }
+.tl-item li { margin-bottom: 0.35rem; }
+.tl-item li::marker { color: var(--line); }
+
+/* Secondary treatment for extracurriculars. */
+.tl-item.is-extra::before {
+  background: var(--paper);
+  border: 1px solid var(--ink-faint);
+  width: 9px; height: 9px; top: 9px; left: calc(-2rem + 1px);
+}
+.tl-item.is-extra { padding-bottom: 2rem; }
+.tl-item.is-extra h3 { font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--ink-soft); }
+.tl-item.is-extra .tl-institution { font-size: 0.75rem; color: var(--ink-faint); }
+.tl-item.is-extra p,
+.tl-item.is-extra li { font-size: 0.88rem; color: var(--ink-faint); }
+.tl-item.is-extra .logo { width: 46px; height: 46px; padding: 0.35rem; opacity: 0.75; }
+.tl-item.is-extra .logo .initials { font-size: 0.8rem; }
+
+
+/* ----------------------------------------------------------- 9. PROJECTS */
+/* Filter buttons above the grid. */
+.filters { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2.5rem; }
+.filter {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: transparent; color: var(--ink-soft); cursor: pointer;
+  transition: all 0.15s ease;
+}
+.filter:hover { border-color: var(--ink); color: var(--ink); }
+.filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 2rem;
+}
+
+.project {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  overflow: hidden;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.project:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+/* Image well. If no image is supplied, the placeholder below shows instead. */
+.project-media {
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+.project-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.project-media .placeholder {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em;
+  color: var(--ink-faint); text-transform: uppercase; text-align: center;
+  padding: 1rem;
+  background-image:
+    repeating-linear-gradient(45deg, var(--paper-2) 0 10px, transparent 10px 20px);
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+}
+
+.project-body { padding: 1.4rem; display: flex; flex-direction: column; flex: 1; }
+.project .year { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.1em; }
+.project h3 { font-size: 1.15rem; margin: 0.4rem 0 0.7rem; }
+.project p { font-size: 0.93rem; color: var(--ink-soft); }
+.project .note { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+.project .tag-row { margin-top: auto; padding-top: 1rem; }
+
+.project-links { display: flex; gap: 0.6rem; margin-top: 1rem; }
+.project-links a {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em;
+  text-decoration: none; color: var(--ink);
+  border-bottom: 1px solid var(--nir); padding-bottom: 1px;
+}
+.project-links a:hover { color: var(--nir); }
+
+.empty-state {
+  font-family: var(--mono); font-size: 0.85rem; color: var(--ink-faint);
+  padding: 2rem 0;
+}
+
+
+/* ------------------------------------------------------------- 10. FOOTER */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: var(--section-y);
+}
+.site-footer h2 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 1.5rem; }
+.site-footer .eyebrow { color: #8fa0a8; }
+.site-footer a { color: var(--paper); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+.footer-links a {
+  font-family: var(--mono); font-size: 0.85rem; text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;
+}
+.footer-links a:hover { border-bottom-color: var(--nir); color: var(--nir); }
+.colophon {
+  font-family: var(--mono); font-size: 0.7rem; color: #8fa0a8;
+  margin-top: 3rem; letter-spacing: 0.05em;
+}
+
+
+/* ------------------------------------------------ 11. MOTION + RESPONSIVE */
+
+/* Scroll reveal. Elements start slightly down and fade in when scrolled to.
+   main.js adds .is-visible. If JS is off, the fallback below keeps them shown. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+
+  .nav-toggle { display: block; }
+  .nav {
+    display: none;
+    position: absolute; top: 62px; left: 0; right: 0;
+    flex-direction: column; align-items: flex-start; gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem var(--gutter) 1rem;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding-block: 0.6rem; width: 100%; }
+
+  .job { grid-template-columns: 1fr; gap: 1.25rem; }
+  .job .period { margin-left: 0; width: 100%; }
+  .logo { width: 64px; height: 64px; }
+
+  .timeline { padding-left: 1.5rem; }
+  .tl-item::before { left: -1.5rem; }
+  .tl-item.is-extra::before { left: calc(-1.5rem + 1px); }
+  .tl-head { flex-direction: column; gap: 0.9rem; }
+
+  .project-grid { grid-template-columns: 1fr; }
+}
+
+/* Printing: mostly for saving the homepage as a PDF. */
+@media print {
+  .site-header, .nav, .cta-row, .filters { display: none; }
+  body { background: #fff; }
+  .project, .meta-strip div { break-inside: avoid; }
+}

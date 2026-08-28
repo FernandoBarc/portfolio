@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Placeholder logo">
+  <!-- Placeholder logo. Replace this file with the real logo (SVG or PNG),
+       keeping the same file name, and it will appear automatically. -->
+  <rect width="120" height="120" fill="#ffffff"/>
+  <rect x="8" y="8" width="104" height="104" fill="none" stroke="#d2d8d0" stroke-dasharray="4 4"/>
+  <text x="60" y="60" text-anchor="middle" dominant-baseline="central"
+        font-family="Archivo, Helvetica, Arial, sans-serif" font-size="34"
+        font-weight="700" fill="#7d8c93">VW</text>
+</svg>

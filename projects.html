@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+  projects.html — the project grid.
+
+  Cards are generated from the PROJECTS list in js/data.js. Each card has a
+  placeholder for a screenshot (assets/projects/) and for a GitHub link; both
+  appear automatically once you fill the "image" and "repo" fields.
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Fernando Barcelata</title>
+  <meta name="description" content="Earth observation, remote sensing and geospatial analysis projects by Fernando Barcelata.">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Fernando Barcelata<span>.</span></a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+
+      <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#academic">Academic</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" style="border-top: none;">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects</h2>
+          <p>Coursework, competitions and things built out of curiosity. Filter by the tool or method you care about.</p>
+        </div>
+
+        <!-- Filter buttons are generated from the tags in js/data.js. -->
+        <div class="filters" id="filters" role="group" aria-label="Filter projects by technology"></div>
+
+        <div class="project-grid" id="project-grid"></div>
+
+        <p class="empty-state" id="empty-state" hidden>No projects with that tag yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Want the detail behind any of these?</h2>
+      <p>Ask me for the report, the code or the maps — I am happy to walk through the methods.</p>
+
+      <div class="footer-links">
+        <a data-profile="email" data-profile-text="true" href="#">email</a>
+        <a data-profile="linkedin" href="#">LinkedIn</a>
+        <a data-profile="github" href="#">GitHub</a>
+        <a data-profile="cv" href="#">CV (PDF)</a>
+      </div>
+
+      <p class="colophon">© <span id="year"></span> Fernando Barcelata — built with plain HTML, CSS and JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
