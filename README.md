@@ -88,23 +88,3 @@ hover states, link underlines. If you change it, change it there only.
 Fonts load from Google Fonts via a `<link>` in each HTML file. Remove those
 lines to go fully offline; the CSS falls back to system fonts.
 
-## Publishing
-
-GitHub Pages is the simplest route:
-
-1. Create a repository named `yourusername.github.io`.
-2. Push the contents of this folder to the `main` branch.
-3. Settings → Pages → deploy from `main`, root folder.
-
-Netlify and Cloudflare Pages also work by dragging this folder onto their
-dashboard.
-
-## Before you send it out
-
-- [ ] Fill in the CFE internship dates and description in `EXPERIENCE`
-- [ ] Add repo and report links to the projects
-- [ ] Add at least one screenshot per project
-- [ ] Replace the placeholder logos
-- [ ] Add your GitHub URL in `PROFILE`
-- [ ] Add the CV PDF
-- [ ] Reread the intro paragraphs — they should sound like you, not like a CV
