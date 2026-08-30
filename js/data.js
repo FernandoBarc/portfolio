@@ -21,20 +21,23 @@
    --------------------------------------------------------------------------- */
 const PROFILE = {
   name: "Fernando Barcelata",
-  role: "Geoinformatics Engineer · Geospatial Data Analyst",
+  role: "Geoinformatics Engineer (WIP) · Data Analyst · Electronics Engineer",
 
   // Short paragraphs of the intro. Add or remove strings from this list.
   intro: [
-    "I turn satellite and sensor data into decisions. I spent three years at Intel validating high-speed silicon, which is really a job about measuring things carefully and being honest about what the numbers say. I now do the same with the Earth: I am an MSc student in Geoinformatics Engineering at Politecnico di Milano, working on remote sensing, machine learning and spatial analysis.",
-    "I am looking for roles in Earth observation, geospatial analytics and environmental data — places where a hardware background and a habit of validating everything are an advantage."
+    "Using data to understand the environment and take better decisions.",
+    "The intend of this web is to showcase the latest projects I've worked on.",
+    "As of 2026-2027 I'll be looking for roles to gain some experience on Earth Observation. If you interested on working with me send me an email or contact me through LinkedIn!.",
+//    "Spent four years running experiments in the laboratory and validating equipment, translating raw data into insights and data informed results. I am a MSc student in Geoinformatics Engineering at Politecnico di Milano, working on remote sensing, machine learning and spatial analysis.",
+//    "I am looking for roles in Earth observation, geospatial analytics and environmental data."
   ],
 
   // Small "acquisition metadata" strip under the intro. Edit freely.
   meta: [
     { label: "Based in", value: "Milan, Italy" },
     { label: "Coordinates", value: "45.4642° N, 9.1900° E" },
-    { label: "Status", value: "MSc 2025–2027 · open to internships" },
-    { label: "Languages", value: "ES native · EN C2 · IT B1" }
+    { label: "Status", value: "MSc 2025–2027 · open to internships" }
+    //{ label: "Languages", value: "ES native · EN C2 · IT B1" }
   ],
 
   // Three short cards under the intro. Delete the list to hide the section.
@@ -48,16 +51,17 @@ const PROFILE = {
       text: "Time-series and geodetic data: interpolation, harmonic decomposition, statistical testing, and the maps and figures that make the result readable."
     },
     {
-      title: "From hardware to data",
-      text: "Six years across electronics validation and manufacturing. I am comfortable with instruments, messy measurements and explaining findings to people who did not run the test."
+      title: "Machine Learning and AI",
+      text: "Supervised Machine Learning and Artifical Neural Networks for data analysis with Python"
+      //text: "Six years across electronics validation and manufacturing. I am comfortable with instruments, messy measurements and explaining findings to people with little context."
     }
   ],
 
   // Contact + links. Leave "" to hide a link.
   email: "barcelataf@gmail.com",
-  phone: "+39 352 057 4667",
+  // phone: "+39 352 057 4667",
   linkedin: "https://linkedin.com/in/fernando-barcelata-iec",
-  github: "",                 // e.g. "https://github.com/yourhandle"
+  github: "https://github.com/FernandoBarc", // e.g. "https://github.com/yourhandle"
   cv: "assets/FernandoBarcelata_CV.pdf"   // drop your PDF here, or set to ""
 };
 
@@ -77,12 +81,13 @@ const EXPERIENCE = [
     period: "Jun 2022 — Jul 2025",
     logo: "assets/logos/intel.svg",
     points: [
-      "Planned and ran PCIe validation on Intel server CPUs — link speed, error tolerance and electrical eye margins across temperature and voltage corners — contributing to two products launched in three years.",
+      //"Planned and ran PCIe validation on Intel server CPUs: link speed, error tolerance and electrical eye margins acrorg.freedesktop.locale1oss temperature and voltage corners. Contributed to two products launched in three years.",
+      "Plan and execution of Electrical Validation for High Speed interfaces (PCIe and UPI) on Server CPU's link speed, error tolerance and electrical eye margins across temperature and voltage corners. Contributed to two products launched in three years.",
       "Analysed the resulting datasets in JMP and Python, traced lane-level anomalies and endpoint errors to known design constraints, and estimated their impact on manufacturing volume.",
       "Acted as the bridge between Electrical Validation and Pre-production Manufacturing: ran the weekly cross-team forum, arbitrated schedule against coverage, and redirected effort to blocking issues.",
-      "Led an eight-person taskforce that rewrote a validation test running 30× over its time budget; reusing register-access strategies from a sister team brought it to half the allocated budget and earned a Departmental Recognition Award."
+      //"Led an eight-person taskforce that rewrote a validation test running 30× over its time budget; reusing register-access strategies from a sister team brought it to half the allocated budget and earned a Departmental Recognition Award."
     ],
-    tags: ["Python", "Bash", "JMP", "PCIe", "Data analysis", "Cross-team leadership"]
+    tags: ["Python", "CMD", "Bash", "Git/Github", "JMP", "PCIe", "Data analysis",]
   },
   {
     company: "Vitesco Technologies",
@@ -92,9 +97,9 @@ const EXPERIENCE = [
     logo: "assets/logos/vitesco.svg",
     points: [
       "Validated the fuel injection circuit of a new Electronic Control Unit for a major US car manufacturer, characterising MOSFET gate transition timing across operating scenarios.",
-      "Ran bench measurement campaigns with oscilloscopes, power supplies and digital analysers, and documented compliance against automotive standards."
+      //"Ran bench measurement campaigns with oscilloscopes, power supplies and digital analysers, and documented compliance against automotive standards."
     ],
-    tags: ["Automotive", "ECU validation", "Oscilloscopes", "Test benches"]
+    tags: ["Oscilloscopes", "Test benches", "Documentation", "Power Supplies"]
   },
   {
     company: "BMW Group",
@@ -107,9 +112,9 @@ const EXPERIENCE = [
       "Built a Python + Tkinter tool that batch-renames archived files and folders from their metadata to enforce the company's naming convention, with extensive edge-case and error handling.",
       "Programmed the routine of a robotic arm introduced as a fallback for a manual assembly station."
     ],
-    tags: ["Python", "Tkinter", "IoT", "Requirements gathering"]
+    tags: ["Python", "Tkinter", "IoT", "Requirements Engineering"]
   },
-  {
+  /*{
     company: "Volkswagen",
     role: "Maintenance Engineering Intern",
     location: "Puebla, Mexico",
@@ -131,7 +136,7 @@ const EXPERIENCE = [
       "Add a short description of what you worked on here."   // <- placeholder
     ],
     tags: ["Power systems"]
-  }
+  }*/
 ];
 
 
@@ -161,7 +166,7 @@ const TIMELINE = [
     institution: "ETH Zürich · Campus Heilbronn",
     title: "Summer School — Beyond the Visible: AI Sensing and the Future of Terrestrial Resources",
     period: "Jun 2026",
-    logo: "assets/logos/ethz.svg",
+    logo: "assets/logos/ethz.png",
     text: "One week of keynotes and hands-on work with ESA, ETH and SBB researchers on AI for Earth observation.",
     details: [
       "First prize with team MINERVA: drone-based mine detection combining multispectral and SAR imagery for post-conflict reconstruction.",
@@ -195,7 +200,7 @@ const TIMELINE = [
     institution: "Platzi",
     title: "Datacademy Challenge",
     period: "2022",
-    logo: "",
+    logo: "assets/logos/platzi.svg",
     text: "Applied data analysis in Python, taken to consolidate the analysis workflow I was using day to day at Intel.",
     details: []
   },
@@ -204,7 +209,7 @@ const TIMELINE = [
     institution: "Platzi",
     title: "Python Data Challenge",
     period: "2021",
-    logo: "",
+    logo: "assets/logos/platzi.svg",
     text: "Four-week introduction to data analysis with Python, ending in a graded final challenge.",
     details: []
   }
@@ -227,7 +232,7 @@ const PROJECTS = [
     year: "2026",
     summary: "A WebGIS study of how land cover shifted across Romania between 2021 and 2023 and how those shifts line up with NO₂, PM2.5 and PM10 concentrations and the population exposed to them. The work combines several data sources and formats into one coherent story, published as a static web page with interactive layers.",
     note: "Layers depend on the POLIMI GeoServer instance and may be unavailable.",
-    image: "",
+    image: "assets/projects/romania_map.jpg",
     repo: "",
     demo: "",
     tags: ["QGIS", "ArcGIS", "Python", "OpenLayers", "JavaScript", "HTML/CSS", "WebGIS"]
@@ -236,7 +241,7 @@ const PROJECTS = [
     title: "Flood mapping from SAR and multispectral imagery with machine learning",
     year: "2026",
     summary: "My introduction to machine learning for Earth observation. I started from the standard SAR change-threshold method for flood delineation, then used that binary mask as training labels over a co-registered multispectral image to train a Random Forest and a Support Vector Machine, and compared the three results.",
-    image: "",
+    image: "assets/projects/PortadaPresentacion.jpeg",
     repo: "",
     demo: "",
     tags: ["Google Earth Engine", "Python", "rasterio", "NumPy", "pandas", "scikit-learn", "SAR"]
@@ -245,7 +250,7 @@ const PROJECTS = [
     title: "Land cover classification of Palermo, Sicily",
     year: "2025",
     summary: "A supervised land-cover map of the Province of Palermo from Landsat 8 Collection 2 Level-2 imagery, classifying forest, agriculture, urban and water for the first half of 2025. The workflow covers cloud masking, scaling, NDVI computation, training sample generation, Random Forest training and post-classification cleaning, validated with confusion matrices and producer's, user's and overall accuracies.",
-    image: "",
+    image: "assets/projects/PalermoLCC_v2.png",
     repo: "",
     demo: "",
     tags: ["Google Earth Engine", "Landsat 8", "Random Forest", "Classification"]
@@ -254,7 +259,7 @@ const PROJECTS = [
     title: "NDVI change analysis, western Milan",
     year: "2025",
     summary: "A two-date comparison of the spectral signature of an area on the outskirts of Milan — water, scattered urban fabric, farmland and uncultivated green — using Sentinel-2 imagery from March and August 2025. The focus is NDVI as a proxy for vegetation health and how it correlates with the other Sentinel-2 bands.",
-    image: "",
+    image: "assets/projects/NDVIClassedMap.jpeg",
     repo: "",
     demo: "",
     tags: ["QGIS", "PyQGIS", "Python", "Sentinel-2", "NDVI"]
@@ -263,7 +268,7 @@ const PROJECTS = [
     title: "Seasonal deformation of the Rio–Antirrio bridge",
     year: "2026",
     summary: "A time-series analysis of Copernicus European Ground Motion Service measurements over the largest cable-stayed bridge of its kind in Europe. Stochastic interpolation separates signal from noise, Fourier harmonics capture the seasonal thermal response and polynomial interpolation gives the long-term trend, with each modelling choice backed by statistical tests.",
-    image: "",
+    image: "assets/projects/istockphoto-183851431-612x612.jpg",
     repo: "",
     demo: "",
     tags: ["MATLAB", "EGMS", "InSAR", "Time series", "Statistics"]

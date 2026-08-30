@@ -11,8 +11,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fernando Barcelata — Geoinformatics Engineer</title>
-  <meta name="description" content="Portfolio of Fernando Barcelata, geoinformatics engineer and geospatial data analyst based in Milan: Earth observation, remote sensing and spatial data analysis.">
+  <title>Fernando Barcelata - Geoinformatics Engineer</title>
+  <link rel="icon" type="image/png" href="/assets/logos/favicon_sat.png">
+  <meta name="description" content="Portfolio of Fernando Barcelata, geoinformatics engineer and geospatial data analyst based in Milan - Earth observation, remote sensing and spatial data analysis.">
 
   <!-- Fonts. Remove these two lines if you prefer to work fully offline;
        the CSS falls back to system fonts. -->
@@ -34,8 +35,8 @@
 
       <nav class="nav" id="nav">
         <a href="index.html" aria-current="page">Home</a>
-        <a href="index.html#experience">Experience</a>
         <a href="index.html#academic">Academic</a>
+        <a href="index.html#experience">Experience</a>
         <a href="projects.html">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -69,10 +70,26 @@
     <section class="section">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Focus</p>
+          <p class="eyebrow">Expertise</p>
           <h2>What I work on</h2>
         </div>
         <div class="focus-grid" id="focus-grid"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================== ACADEMIC + EXTRACURRICULAR ==============
+         One vertical track. Degrees are prominent; courses, hackathons and
+         summer schools are rendered smaller and muted (kind:
+         "extracurricular" in js/data.js). -->
+    <section class="section" id="academic">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Academic journey</p>
+          <h2>Studies and other experiences</h2>
+          <!-- <p>Degrees are marked with a filled point on the track; summer schools, hackathons and courses sit on the same line as lighter marks.</p> -->
+        </div>
+        <div class="timeline" id="timeline"></div>
       </div>
     </section>
 
@@ -82,34 +99,21 @@
         <div class="section-head">
           <p class="eyebrow">Experience</p>
           <h2>Where I have worked</h2>
-          <p>Six years across semiconductor validation, automotive electronics and manufacturing, moving steadily from instruments towards data.</p>
+          <p>Six years across semiconductor validation, automotive electronics and manufacturing: from instruments, tests and experiments to data driven decisions.</p>
         </div>
         <div id="experience-list"></div>
       </div>
     </section>
 
-    <!-- ===================== ACADEMIC + EXTRACURRICULAR ==============
-         One vertical track. Degrees are prominent; courses, hackathons and
-         summer schools are rendered smaller and muted (kind:
-         "extracurricular" in js/data.js). -->
-    <section class="section" id="academic">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Academic &amp; beyond</p>
-          <h2>Studies, and what I did around them</h2>
-          <p>Degrees are marked with a filled point on the track; summer schools, hackathons and courses sit on the same line as lighter marks.</p>
-        </div>
-        <div class="timeline" id="timeline"></div>
-      </div>
-    </section>
   </main>
+
 
   <!-- ============================ FOOTER ============================ -->
   <footer class="site-footer" id="contact">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Open to Earth observation and geospatial data roles.</h2>
-      <p>Based in Milan, happy to relocate within Europe.</p>
+      <p>Based in Milan, happy to relocate within Europe, Canada or Mexico.</p>
 
       <div class="footer-links">
         <a data-profile="email" data-profile-text="true" href="#">email</a>
@@ -118,7 +122,8 @@
         <a data-profile="cv" href="#">CV (PDF)</a>
       </div>
 
-      <p class="colophon">© <span id="year"></span> Fernando Barcelata — built with plain HTML, CSS and JavaScript.</p>
+      <p class="colophon">© <span id="year"></span> Fernando Barcelata - built with plain HTML, CSS and JavaScript with Claude.</p>
+      <a target="_blank" href="https://icons8.com/icon/2236/satellite-in-orbit">Satélite en órbita</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
     </div>
   </footer>
 
